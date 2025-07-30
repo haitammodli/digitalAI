@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 import './Login.css';
 import { Link } from 'react-router-dom';
 
-// Font Awesome imports
+// Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faLock, faUser, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-const Login = () => {
+const Register = () => {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
-    alert(`Email: ${email}\nPassword: ${password}`);
+    alert(`Username: ${username}\nEmail: ${email}\nPassword: ${password}`);
   };
 
   return (
@@ -22,12 +23,26 @@ const Login = () => {
         <div className="logo">
           <div className="logo-box">🟪</div>
           <h1>DailyPost</h1>
-          <p className="subtitle">Plateforme de gestion alimentée par l'IA</p>
+          <p className="subtitle">Rejoignez notre plateforme IA</p>
         </div>
 
-        <form onSubmit={handleLogin}>
-          <h2>Connexion</h2>
-          <p className="access-text">Accédez à votre tableau de bord</p>
+        <form onSubmit={handleRegister}>
+          <h2>Créer un compte</h2>
+          <p className="access-text">Commencez votre aventure maintenant</p>
+
+          <label>Nom d'utilisateur</label>
+          <div className="input-wrapper">
+            <span className="icon">
+              <FontAwesomeIcon icon={faUser} />
+            </span>
+            <input
+              type="text"
+              placeholder="Nom d'utilisateur"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
 
           <label>Email</label>
           <div className="input-wrapper">
@@ -36,7 +51,7 @@ const Login = () => {
             </span>
             <input
               type="email"
-              placeholder="votre@email.com"
+              placeholder="exemple@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -63,12 +78,10 @@ const Login = () => {
             </span>
           </div>
 
-          <a href="#" className="forgot-password">Mot de passe oublié ?</a>
-
-          <button type="submit" className="login-button">Se connecter</button>
+          <button type="submit" className="login-button">Créer un compte</button>
 
           <p className="signup-link">
-            Pas encore de compte ? <Link to="/register">Créer un compte</Link>
+            Déjà inscrit ? <Link to="/login">Se connecter</Link>
           </p>
         </form>
       </div>
@@ -76,4 +89,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
