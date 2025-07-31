@@ -8,6 +8,5 @@ public class DigitaliaApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DigitaliaApplication.class, args);
-    }
+    }}
 
-}
