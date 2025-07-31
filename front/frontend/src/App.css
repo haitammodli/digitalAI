@@ -40,3 +40,22 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Layout styles (App.css or global file) */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #fafafa;
+}
