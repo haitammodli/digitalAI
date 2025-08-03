@@ -74,7 +74,7 @@
 }
 
 .nav-link.active {
-  background-color: #edeaff;  /* Same as hover */
+  background-color: #edeaff;  
   color: #6b46c1;
   font-weight: 600;
   box-shadow: 0 0 0 2px #d9ceff inset;

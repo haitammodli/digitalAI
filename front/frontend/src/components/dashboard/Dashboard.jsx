@@ -1,4 +1,3 @@
-// Dashboard.jsx (your existing code with one small change)
 import React from 'react';
 import './Dashboard.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,7 +6,6 @@ import { faFileAlt, faHeart, faUsers, faChartLine, faBullhorn } from '@fortaweso
 const Dashboard = () => {
   return (
     <div className="main-content">
-      {/* Everything else stays the same */}
       <div className="dashboard">
         <div className="dashboard-header">
           <div>
