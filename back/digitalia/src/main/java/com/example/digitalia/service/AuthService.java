@@ -34,8 +34,7 @@ public class AuthService {
         User user;
         String hashedPassword = passwordEncoder.encode(request.getPassword());
 
-       if (Role.valueOf(request.getRole()) == Role.ADMIN)
-        {
+        if (Role.valueOf(request.getRole()) == Role.ADMIN) {
             Admin admin = new Admin();
             admin.setEmail(request.getEmail());
             admin.setUsername(request.getUsername());
@@ -44,7 +43,7 @@ public class AuthService {
             admin.setActive(true);
             user = admin;
 
-        } else if (Role.valueOf(request.getRole()) == Role.ADMIN) {
+        } else if (Role.valueOf(request.getRole()) == Role.CM) {
             CM cm = new CM();
             cm.setEmail(request.getEmail());
             cm.setUsername(request.getUsername());
