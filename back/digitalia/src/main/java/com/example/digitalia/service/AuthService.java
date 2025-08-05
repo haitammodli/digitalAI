@@ -16,24 +16,19 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 @Service
 @RequiredArgsConstructor
 public class AuthService {
-
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtUtils jwtUtils;
-
     public void register(RegisterRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new EmailAlreadyExistsException("Email déjà existant !");
         }
-
         User user;
         String hashedPassword = passwordEncoder.encode(request.getPassword());
-
         if (Role.valueOf(request.getRole()) == Role.ADMIN) {
             Admin admin = new Admin();
             admin.setEmail(request.getEmail());
@@ -42,7 +37,6 @@ public class AuthService {
             admin.setRole(Role.ADMIN);
             admin.setActive(true);
             user = admin;
-
         } else if (Role.valueOf(request.getRole()) == Role.CM) {
             CM cm = new CM();
             cm.setEmail(request.getEmail());
@@ -51,11 +45,9 @@ public class AuthService {
             cm.setRole(Role.CM);
             cm.setActive(true);
             user = cm;
-
         } else {
             throw new IllegalArgumentException("Rôle invalide : " + request.getRole());
         }
-
         userRepository.save(user);
     }
 
