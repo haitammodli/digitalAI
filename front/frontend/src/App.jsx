@@ -4,6 +4,7 @@ import Register from './components/login/Register.jsx';
 import Dashboard from './components/dashboard/Dashboard.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
 import Publications from './components/publications/Publications.jsx';
+import Stats from './components/stats/Stats.jsx';
 import MainLayout from './components/layout/MainLayout.jsx';
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/publications" element={<Publications />} />
+        <Route path="/stats" element={<Stats />} />
       </Route>
     </Routes>
   );

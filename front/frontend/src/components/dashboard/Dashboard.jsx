@@ -1,9 +1,11 @@
 import React from 'react';
 import './Dashboard.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate } from 'react-router-dom';
 import { faFileAlt, faHeart, faUsers, faChartLine, faBullhorn } from '@fortawesome/free-solid-svg-icons';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   return (
     <div className="main-content">
       <div className="dashboard">
@@ -12,7 +14,7 @@ const Dashboard = () => {
             <h1>Tableau de bord</h1>
             <p>Gérez votre présence en ligne avec l'aide de l'IA</p>
           </div>
-          <button className="new-post-btn">
+          <button className="new-post-btn" onClick={() => navigate('/publications')}>
             <FontAwesomeIcon icon={faFileAlt} />
             Nouvelle publication
           </button>

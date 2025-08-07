@@ -46,11 +46,11 @@ html, body, #root {
 .calendar-header p {
   margin: 0.3rem 0 0;
   font-size: 1.1rem;
-  color: #7f8c8d;
+  color: #666;
 }
 
 .schedule-btn {
-  background-color: #007bff;
+  background-color: #6b46c1;
   border: none;
   color: white;
   font-size: 1.1rem;
@@ -64,7 +64,7 @@ html, body, #root {
 }
 
 .schedule-btn:hover {
-  background-color: #0056b3;
+  background-color: #2f2053;
 }
 
 .calendar-content {
@@ -81,7 +81,7 @@ html, body, #root {
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  color: #34495e;
+  color: #322257;
   transition: background-color 0.2s ease;
 }
 
@@ -90,7 +90,7 @@ html, body, #root {
 }
 
 .rbc-toolbar .rbc-active {
-  background-color: #007bff !important;
+  background-color: #6b46c1 !important;
   color: white !important;
 }
 
@@ -103,7 +103,7 @@ html, body, #root {
 
 
 .rbc-event {
-  background-color: #007bff;
+  background-color: #6b46c1;
   border: none;
   padding: 3px 7px;
   border-radius: 8px;

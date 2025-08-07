@@ -16,14 +16,15 @@
 }
 
 .dashboard-header h1 {
-  font-size: 1.8rem;
-  margin: 0;
   font-weight: 700;
-  color: #000000;
+  margin: 0;
+  font-size: 2.5rem;
+  color: #2c3e50;
+ 
 }
 
 .dashboard-header p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #666;
   margin: 0.5rem 0 0 0;
 }

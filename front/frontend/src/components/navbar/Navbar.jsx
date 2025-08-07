@@ -22,13 +22,13 @@ const Navbar = () => {
         <NavLink to="/dashboard" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
           <FontAwesomeIcon icon={faChartLine} /> Tableau de bord
         </NavLink>
-        <NavLink to="Calendar" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
+        <NavLink to="/Calendar" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
           <FontAwesomeIcon icon={faCalendar} /> Calendrier
         </NavLink>
-        <NavLink to="Publications" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
+        <NavLink to="/Publications" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
           <FontAwesomeIcon icon={faFileAlt} /> Publications
         </NavLink>
-        <NavLink to="#" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
+        <NavLink to="/Stats" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
           <FontAwesomeIcon icon={faChartBar} /> Statistiques
         </NavLink>
         <NavLink to="#" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>

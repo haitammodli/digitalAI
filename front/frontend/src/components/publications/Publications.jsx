@@ -54,22 +54,20 @@ const PublicationPage = () => {
   return (
     <div className="publication-page-container">
       {/* Top bar */}
-      <header className="top-bar">
-        <div className="search-box">
+       <header className="top-bar">
+      {  /*<div className="search-box">
           <FontAwesomeIcon icon={faSearch} />
           <input type="text" placeholder="Rechercher..." />
-        </div>
-        <div className="header-right">
-          <button className="btn-suggestions">Afficher suggestions IA</button>
-          <FontAwesomeIcon icon={faBell} className="icon-bell" />
-          <div className="user-avatar">JD</div>
-        </div>
+        </div> */}
+       
       </header>
 
       {/* Publications Section */}
       <section className="publications-section">
-        <h2>Publications</h2>
-
+         <div className="publications-header">
+           <h1>Publications</h1>
+           <button className="btn-suggestions">Afficher suggestions IA</button>
+         </div>
         {/* Create Publication Form */}
         <form
           className="create-publication"
