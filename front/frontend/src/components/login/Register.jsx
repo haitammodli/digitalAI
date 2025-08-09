@@ -1,20 +1,47 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // Font Awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faLock, faUser, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faLock, faUser, faEye, faEyeSlash, faUserShield } from '@fortawesome/free-solid-svg-icons';
 
 const Register = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState('CM'); // Default role
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    alert(`Username: ${username}\nEmail: ${email}\nPassword: ${password}`);
+
+    try {
+      const response = await fetch("http://localhost:8085/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+          role
+        })
+      });
+
+      if (response.ok) {
+        // ✅ Go to dashboard after successful registration
+        navigate("/dashboard");
+      } else {
+        const err = await response.text();
+        alert("Registration failed: " + err);
+      }
+    } catch (error) {
+      console.error("Error registering:", error);
+      alert("An error occurred. Check console.");
+    }
   };
 
   return (
@@ -76,6 +103,22 @@ const Register = () => {
             >
               <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
             </span>
+          </div>
+
+          <label>Rôle</label>
+          <div className="input-wrapper">
+            <span className="icon">
+              <FontAwesomeIcon icon={faUserShield} />
+            </span>
+            <select
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className="role-select"
+              required
+            >
+              <option value="CM">Community Manager</option>
+              <option value="ADMIN">Admin</option>
+            </select>
           </div>
 
           <button type="submit" className="login-button">Créer un compte</button>

@@ -281,3 +281,52 @@ label {
 .input-wrapper .icon {
   color: #7f5af0; /* Couleur des icônes */
 }
+/* Wrapper for select with icon */
+.select-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.select-wrapper .icon {
+  position: absolute;
+  left: 14px;
+  font-size: 18px;
+  color: #7f5af0;
+}
+
+/* Style the select itself */
+.role-select {
+  width: 100%;
+  padding: 0.8rem 0.8rem 0.8rem 2.8rem; /* match input padding */
+  border-radius: 12px;
+  border: 2px solid #eee;
+  font-size: 1rem;
+  background-color: white;
+  color: #2d2d2d;
+  appearance: none; /* hide default browser arrow */
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Custom dropdown arrow */
+.select-wrapper::after {
+  content: "▼";
+  font-size: 12px;
+  color: #888;
+  position: absolute;
+  right: 14px;
+  pointer-events: none;
+}
+
+/* Hover & focus styles */
+.role-select:hover {
+  border-color: #ccc;
+}
+
+.role-select:focus {
+  border-color: #7f5af0;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(127, 90, 240, 0.1);
+}

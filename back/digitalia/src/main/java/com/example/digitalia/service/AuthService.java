@@ -11,11 +11,18 @@ import com.example.digitalia.security.JwtUtils;
 import com.example.digitalia.dto.AuthRequest;
 import com.example.digitalia.dto.AuthResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -52,14 +59,30 @@ public class AuthService {
     }
 
     public AuthResponse login(AuthRequest request) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
-                        request.getPassword()
-                )
-        );
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            request.getEmail(),
+                            request.getPassword()
+                    )
+            );
 
-        String token = jwtUtils.generateToken(request.getEmail());
-        return new AuthResponse(token);
+            String token = jwtUtils.generateToken(request.getEmail());
+            return new AuthResponse(token);
+        } catch (AuthenticationException ex) {
+            // Return 401 instead of 403 when authentication fails
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid email or password");
+        }}
+    public List<User> listAdmins() {
+        return userRepository.findAll()
+                .stream()
+                .filter(user -> user.getRole() == Role.ADMIN)
+                .collect(Collectors.toList());
+    }
+    public List<User> listCMs() {
+        return userRepository.findAll()
+                .stream()
+                .filter(user -> user.getRole() == Role.CM)
+                .collect(Collectors.toList());
     }
 }

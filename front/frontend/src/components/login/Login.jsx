@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // Font Awesome imports
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,10 +10,43 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e) => {
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    alert(`Email: ${email}\nPassword: ${password}`);
+    setLoading(true);
+
+    try {
+      const response = await fetch("http://localhost:8085/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Login successful:", data);
+
+        // Store JWT token if returned
+        localStorage.setItem("token", data.token);
+
+        // Redirect to dashboard or home
+        navigate("/dashboard");
+      } else {
+        const errorText = await response.text();
+        console.error("Login failed:", errorText);
+        alert("Échec de la connexion : " + errorText);
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
+      alert("Une erreur est survenue. Consultez la console.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -63,9 +96,11 @@ const Login = () => {
             </span>
           </div>
 
-          <a href="#" className="forgot-password">Mot de passe oublié ?</a>
+          <Link to="/forgot-password" className="forgot-password">Mot de passe oublié ?</Link>
 
-          <button type="submit" className="login-button">Se connecter</button>
+          <button type="submit" className="login-button" disabled={loading}>
+            {loading ? "Connexion..." : "Se connecter"}
+          </button>
 
           <p className="signup-link">
             Pas encore de compte ? <Link to="/register">Créer un compte</Link>
