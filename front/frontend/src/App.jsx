@@ -6,6 +6,7 @@ import Calendar from './components/calendar/Calendar.jsx';
 import Publications from './components/publications/Publications.jsx';
 import Stats from './components/stats/Stats.jsx';
 import MainLayout from './components/layout/MainLayout.jsx';
+import Settings from './components/settings/Settings.jsx'; // <-- ajout
 
 const App = () => {
   return (
@@ -15,12 +16,13 @@ const App = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
 
-      
+      {/* Routes avec navbar/sidebar */}
       <Route element={<MainLayout />}>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/publications" element={<Publications />} />
         <Route path="/stats" element={<Stats />} />
+        <Route path="/settings" element={<Settings />} /> 
       </Route>
     </Routes>
   );
