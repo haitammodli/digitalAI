@@ -1,17 +1,17 @@
-/* ====== conteneur calqué sur Publications ====== */
+
 html, body, #root { height: 100%; }
 .settings-page-container{
   padding: 2rem 3rem;
   background-color: #f9fafb;
   min-height: 100vh;
-  margin-left: 250px;                /* largeur de ta sidebar */
-  width: calc(100vw - 250px);        /* plein écran - sidebar */
+  margin-left: 250px;              
+  width: calc(100vw - 250px);        
   box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color:#333;
 }
 
-/* header */
+
 .settings-header{
   display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;
 }
@@ -26,17 +26,17 @@ html, body, #root { height: 100%; }
   background:#111827;color:#fff;border:none;border-radius:8px;padding:.5rem 1rem;cursor:pointer;font-weight:600;
 }
 
-/* grille interne : menu + contenu */
+
 .settings-layout{
   display:grid;grid-template-columns:280px 1fr;gap:24px;
 }
 
-/* cartes */
+
 .card{
   background:#fff;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 2px 12px rgb(0 0 0 / 0.05);
 }
 
-/* menu gauche */
+
 .settings-menu{padding:12px}
 .menu-item{
   width:100%;text-align:left;padding:12px 14px;border-radius:12px;border:1px solid transparent;background:transparent;color:#374151;cursor:pointer;
@@ -44,12 +44,12 @@ html, body, #root { height: 100%; }
 .menu-item:hover{background:#f9fafb}
 .menu-item.active{background:#eef2ff;border-color:#d9ddff;color:#4338ca;font-weight:600}
 
-/* panneau droite */
+
 .panel{padding:18px}
 .panel h2{margin:0 0 4px}
 .muted{color:#6b7280}
 
-/* formulaire */
+
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px}
 .field{display:flex;flex-direction:column}
 .field.full{grid-column:1 / -1}
@@ -59,54 +59,53 @@ html, body, #root { height: 100%; }
 }
 .field textarea{resize:vertical}
 
-/* rows (notifications) */
+
 .row{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #f1f5f9;padding:14px 4px}
 .row:first-of-type{border-top:none}
 .row-title{font-weight:600}
 .row-sub{font-size:13px}
 
-/* toggle */
+
 .toggle{position:relative;width:48px;height:28px;border-radius:999px;background:#d1d5db;border:none;cursor:pointer}
 .toggle .dot{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:transform .2s}
 .toggle.on{background:#6b5cff}
 .toggle.on .dot{transform:translateX(20px)}
 
-/* providers */
 .providers{display:grid;gap:10px;margin-top:8px}
 .provider{display:flex;align-items:center;justify-content:space-between;border:1px solid #e5e7eb;border-radius:12px;padding:12px}
 .provider-info{display:flex;align-items:center;gap:12px}
 .logo{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#111827;color:#fff;font-weight:700}
 .name{font-weight:600}
 
-/* actions */
+
 .end{display:flex;justify-content:flex-end;margin-top:12px}
 .ico{margin-right:6px}
 
-/* responsive */
+
 @media (max-width: 1024px){
   .settings-layout{grid-template-columns:1fr}
   .form-grid{grid-template-columns:1fr}
 }
-/* ——— Force la couleur du texte dans les champs ——— */
+
 .field input,
 .field textarea,
 .field select {
-  color: #111827 !important;       /* texte tapé */
-  background: #fff;                 /* fond blanc */
-  caret-color: #111827;             /* curseur visible */
+  color: #111827 !important;      
+  background: #fff;                
+  caret-color: #111827;             
 }
 
-/* Placeholders visibles (sinon ils peuvent être blancs) */
+
 .field input::placeholder,
 .field textarea::placeholder {
   color: #9ca3af !important;
   opacity: 1;
 }
 
-/* Cas Chrome/Edge quand l’autofill ou d’anciens styles forcent la couleur */
+
 .field input:-webkit-autofill,
 .field textarea:-webkit-autofill,
 .field select:-webkit-autofill {
   -webkit-text-fill-color: #111827 !important;
-  transition: background-color 9999s ease-out 0s; /* évite le jaune */
+  transition: background-color 9999s ease-out 0s; 
 }

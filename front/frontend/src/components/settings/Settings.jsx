@@ -14,13 +14,13 @@ const Settings = () => {
 
   return (
     <div className="settings-page-container">
-      {/* Header aligné sur Publications */}
+      {}
       <header className="settings-header">
         <h1>Settings</h1>
         <button className="btn-primary">Save</button>
       </header>
 
-      {/* Grille interne : menu gauche + contenu droite */}
+      {}
       <section className="settings-layout">
         <aside className="card settings-menu">
           {MENU.map((m) => (
@@ -134,7 +134,6 @@ function IntegrationsPanel() {
   );
 }
 
-/* -------- ATOMS -------- */
 function Field({ label, children, full }) {
   return (
     <label className={`field ${full ? "full" : ""}`}>

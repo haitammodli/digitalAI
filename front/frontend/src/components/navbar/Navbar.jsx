@@ -31,7 +31,7 @@ const Navbar = () => {
         <NavLink to="/Stats" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
           <FontAwesomeIcon icon={faChartBar} /> Statistiques
         </NavLink>
-        <NavLink to="#" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
+        <NavLink to="settings" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
           <FontAwesomeIcon icon={faCog} /> Paramètres
         </NavLink>
       </nav>
